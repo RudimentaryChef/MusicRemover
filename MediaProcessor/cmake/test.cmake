@@ -75,7 +75,9 @@ add_test_executable(CommandBuilderTester
     ${CMAKE_SOURCE_DIR}/src/Utils.cpp
 )
 
-add_test_executable(LLMEvalTests
-    ${CMAKE_SOURCE_DIR}/tests/LLMEvalTests.cpp
-)
+# LLMEvalTests only needs gtest + filesystem — no sndfile or libdf
+add_executable(LLMEvalTests ${CMAKE_SOURCE_DIR}/tests/LLMEvalTests.cpp)
+target_compile_definitions(LLMEvalTests PRIVATE TEST_MEDIA_DIR="${TEST_MEDIA_DIR}")
+target_link_libraries(LLMEvalTests PRIVATE gtest_main fmt::fmt)
+add_test(NAME LLMEvalTests COMMAND LLMEvalTests)
 

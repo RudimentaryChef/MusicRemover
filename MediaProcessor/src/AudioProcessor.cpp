@@ -234,7 +234,7 @@ bool AudioProcessor::filterChunks() {
     // Wait for all threads to complete
     bool allSuccess = true;
     for (auto& result : results) {
-        allSuccess &= result.get();
+        allSuccess = result.get();
     }
 
     if (!allSuccess) {
