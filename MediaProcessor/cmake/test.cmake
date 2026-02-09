@@ -70,8 +70,12 @@ add_test_executable(VideoProcessorTester
 )
 
 add_test_executable(CommandBuilderTester
-    ${CMAKE_SOURCE_DIR}/tests/CommandBuilderTester.cpp 
-    ${CMAKE_SOURCE_DIR}/src/CommandBuilder.cpp 
+    ${CMAKE_SOURCE_DIR}/tests/CommandBuilderTester.cpp
+    ${CMAKE_SOURCE_DIR}/src/CommandBuilder.cpp
     ${CMAKE_SOURCE_DIR}/src/Utils.cpp
+)
+
+add_test_executable(LLMEvalTests
+    ${CMAKE_SOURCE_DIR}/tests/LLMEvalTests.cpp
 )
 
