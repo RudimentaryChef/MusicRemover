@@ -39,9 +39,10 @@ jobs:
       # Docker resolves the arch per platform for us, via the manifest
       - name: Build and Push Multi-Arch Image
         run: |
+          OWNER_LC=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
           docker buildx build \
             --platform linux/amd64,linux/arm64 \
             --no-cache \
-            --tag ghcr.io/${{ github.repository_owner }}/fast-music-remover:latest \
+            --tag ghcr.io/${OWNER_LC}/fast-music-remover:latest \
             --push \
             .
